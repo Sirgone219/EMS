@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eclipse Tower Medical Center</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <nav id="navbar">
+    <div class="logo">ECLIPSE TOWER <span>MEDICAL CENTER</span></div>
+    <div class="nav-links">
+      <a href="#servizi">Servizi</a>
+      <a href="#bandi">Bandi</a>
+      <a href="#reparti">Reparti</a>
+      <a href="#prenota">Prenota</a>
+      <button class="nav-btn" onclick="openStaff()">Staff</button>
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <p class="badge">PRIVATE MEDICAL FACILITY</p>
+    <h1>Eclipse Tower Medical Center</h1>
+    <p class="subtitle">
+      Assistenza sanitaria premium, interventi rapidi e supporto medico avanzato per la città di Los Santos.
+    </p>
+    <div class="hero-actions">
+      <a href="#prenota" class="main-btn">Richiedi visita</a>
+      <a href="#bandi" class="second-btn">Candidati EMS</a>
+    </div>
+  </div>
+</header>
+
+<section id="servizi" class="section">
+  <div class="section-header">
+    <p>MEDICAL SERVICES</p>
+    <h2>Servizi principali</h2>
+    <span>Un centro medico moderno per emergenze, controlli e assistenza privata.</span>
+  </div>
+
+  <div class="cards">
+    <div class="card"><h3>Pronto Soccorso</h3><p>Assistenza immediata per incidenti, ferite, malori e situazioni critiche.</p></div>
+    <div class="card"><h3>Visite Mediche</h3><p>Controlli generali, certificati medici e valutazioni cliniche personalizzate.</p></div>
+    <div class="card"><h3>Trauma Center</h3><p>Gestione avanzata di traumi, fratture, ferite da arma e incidenti stradali.</p></div>
+    <div class="card"><h3>Servizio Ambulanza</h3><p>Interventi su chiamata con unità EMS operative in tutta Los Santos.</p></div>
+  </div>
+</section>
+
+<section id="bandi" class="section bandi-section">
+  <div class="section-header">
+    <p>RECRUITMENT BOARD</p>
+    <h2>Bandi Medical Center</h2>
+    <span>Candidature dedicate allo staff sanitario del centro medico.</span>
+  </div>
+
+  <div class="bando-grid">
+    <div class="bando-card open-bando">
+      <div class="bando-head">
+        <p>APERTO</p>
+        <span>Recruitment</span>
+      </div>
+      <h3>Medical Internship</h3>
+      <p class="bando-desc">
+        Percorso d’ingresso per tirocinanti, soccorritori e nuovi membri dell’équipe medica.
+      </p>
+      <button onclick="openBandoForm('Medical Internship')">Candidati</button>
+    </div>
+
+    <div class="bando-card">
+      <div class="bando-head closed">
+        <p>CHIUSO</p>
+        <span>Advanced Division</span>
+      </div>
+      <h3>Advanced Surgeon</h3>
+      <p class="bando-desc">
+        Selezione per personale chirurgico avanzato. Attualmente non disponibile.
+      </p>
+      <button disabled>Chiuso</button>
+    </div>
+  </div>
+</section>
+
+<section id="reparti" class="section departments">
+  <div class="section-header">
+    <p>DEPARTMENTS</p>
+    <h2>Reparti</h2>
+    <span>Organizzazione medica interna di Eclipse Tower Medical Center.</span>
+  </div>
+
+  <div class="department-list">
+    <div><strong>Emergency Unit</strong><span>Emergenze e codice rosso</span></div>
+    <div><strong>General Medicine</strong><span>Visite e controlli base</span></div>
+    <div><strong>Surgery Division</strong><span>Operazioni e trattamenti avanzati</span></div>
+    <div><strong>Psychological Support</strong><span>Supporto mentale e stress post-traumatico</span></div>
+  </div>
+</section>
+
+<section id="prenota" class="section form-section">
+  <div class="section-header">
+    <p>APPOINTMENT REQUEST</p>
+    <h2>Richiedi appuntamento</h2>
+    <span>Questa richiesta usa il webhook visite mediche.</span>
+  </div>
+
+  <form id="requestForm">
+    <input id="nomeIC" type="text" placeholder="Nome e cognome IC" required />
+    <input id="discord" type="text" placeholder="Discord" required />
+    <input id="telefono" type="text" placeholder="Numero di telefono IC" required />
+    <select id="servizio" required>
+      <option value="">Seleziona servizio</option>
+      <option>Visita generale</option>
+      <option>Controllo post-incidente</option>
+      <option>Certificato medico</option>
+      <option>Supporto psicologico</option>
+      <option>Altro</option>
+    </select>
+    <textarea id="descrizione" placeholder="Descrivi il motivo della richiesta" required></textarea>
+    <button type="submit">Invia richiesta</button>
+  </form>
+
+  <p id="formStatus"></p>
+</section>
+
+<div id="bandoModal" class="modal">
+  <div class="modal-box wide">
+    <button class="close" onclick="closeBandoForm()">×</button>
+    <h2>Candidatura Medical Center</h2>
+    <p class="modal-subtitle" id="bandoTitle">Medical Internship</p>
+
+    <form id="bandoForm">
+      <input id="bandoNomeIC" type="text" placeholder="Nome e cognome IC" required />
+      <input id="bandoDiscord" type="text" placeholder="Discord" required />
+      <input id="bandoEta" type="number" placeholder="Età OOC" required />
+      <input id="bandoOre" type="text" placeholder="Disponibilità giornaliera" required />
+      <textarea id="bandoEsperienza" placeholder="Esperienza RP / EMS / Medico" required></textarea>
+      <textarea id="bandoMotivo" placeholder="Perché vuoi entrare nel Medical Center?" required></textarea>
+      <button type="submit">Invia candidatura</button>
+    </form>
+
+    <p id="bandoStatus"></p>
+  </div>
+</div>
+
+<div id="staffModal" class="modal">
+  <div class="modal-box">
+    <button class="close" onclick="closeStaff()">×</button>
+    <div id="loginPanel">
+      <h2>Accesso Staff</h2>
+      <input id="staffPassword" type="password" placeholder="Password staff" />
+      <button onclick="staffLogin()">Accedi</button>
+      <p id="loginStatus"></p>
+    </div>
+    <div id="staffPanel" class="hidden">
+      <h2>Dashboard Medical Center</h2>
+      <p>Area riservata allo staff sanitario.</p>
+      <div class="staff-stats">
+        <div><strong>24/7</strong><span>Assistenza</span></div>
+        <div><strong>EMS</strong><span>Unità operative</span></div>
+        <div><strong>ETMC</strong><span>Medical Center</span></div>
+      </div>
+      <p class="small">Dashboard statica. Per gestione reale serve un backend.</p>
+    </div>
+  </div>
+</div>
+
+<footer>© Eclipse Tower Medical Center - Los Santos Healthcare Portal</footer>
+<script src="script.js"></script>
+</body>
+</html>
